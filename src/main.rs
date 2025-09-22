@@ -1,8 +1,11 @@
 mod network;
+mod models;
+
+use crate::network::client::NetworkClient;
+use crate::network::requests::EventRequest;
 
 use tokio::runtime::Runtime;
-use reqwest;
-use reqwest::Error;
+use reqwest::{ Error, Response, StatusCode };
 use std::env;
 
 fn main() {
@@ -11,14 +14,25 @@ fn main() {
         return;
     };
 
+    let client = NetworkClient::new();
+
     let runtime = Runtime::new().unwrap();
-    match runtime.block_on(fetch_user_events(user.as_str())) {
+    match runtime.block_on(fetch_user_events(&client, user.as_str())) {
         Ok(events) => { println!("{:?}", events) },
         Err(e) => { println!("{:?}", e); }
     }
 
 }
 
-async fn fetch_user_events(user: &str) -> Result<String,Error> {
-    reqwest::get(format!("https://api.github.com/users/{}/events", user)).await?.text().await
+async fn fetch_user_events(client: &NetworkClient, user: &str) -> Result<Response, Error> {
+    let request = EventRequest::new(user);
+    let response = client.start_request(&request).await.expect("Unexpected error");
+
+    match response.status() {
+        StatusCode::OK => response.json() {
+
+        }
+    }
 }
+
+async fn

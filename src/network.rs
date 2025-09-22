@@ -1,4 +1,4 @@
-mod requests;
-mod client;
+pub mod requests;
+pub mod client;
 
 

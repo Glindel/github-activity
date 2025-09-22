@@ -2,7 +2,7 @@ pub trait Request {
     fn get_path(&self) -> &String;
     fn get_method(&self) -> &Method;
 
-    fn get_user_agen(&self) -> &str {
+    fn get_user_agent(&self) -> &str {
         "github-activity"
     }
 }
