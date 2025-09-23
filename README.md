@@ -1,4 +1,5 @@
 # 📊 github-activity
+[roadmap.sh project](https://roadmap.sh/projects/github-user-activity)
 
 `github-activity` is a **Rust CLI tool** that fetches and displays the latest public events from a GitHub user profile.  
 It’s a simple way to check a user’s recent activity directly from your terminal.
