@@ -18,7 +18,6 @@ impl NetworkClient {
     pub async fn start_request(&self, request: &impl Request) -> Result<Response, Error> {
         match request.get_method() {
             Method::Get => self.get_request(request).await,
-            _ => panic!("No valid method given")
         }
     }
 

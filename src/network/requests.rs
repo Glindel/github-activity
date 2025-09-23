@@ -32,21 +32,7 @@ impl Request for EventRequest {
 }
 
 pub enum Method {
-    Get, Head, Post, Put, Delete, Connect, Options, Trace, Patch
-}
-
-impl Method {
-    pub fn raw_value(&self) -> &str {
-        match self {
-            Method::Get => "GET",
-            Method::Head => "HEAD",
-            Method::Post => "POST",
-            Method::Put => "PUT",
-            Method::Delete => "DELETE",
-            Method::Connect => "CONNECT",
-            Method::Options => "OPTIONS",
-            Method::Trace => "TRACE",
-            Method::Patch => "PATCH"
-        }
-    }
+    Get,
+    // Not used for now
+    // Head, Post, Put, Delete, Connect, Options, Trace, Patch
 }
